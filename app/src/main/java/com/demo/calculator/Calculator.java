@@ -26,6 +26,9 @@ public class Calculator {
     public static String SUM_S_HAND = "s";
     public static String SUM_L_HAND = "sum";
 
+    public static String DIFF_S_HAND = "d";
+    public static String DIFF_L_HAND = "diff";
+
     private final Options options = new Options();
     private final HelpFormatter formatter = new HelpFormatter();
     private final CommandLineParser parser = new DefaultParser();
@@ -47,7 +50,11 @@ public class Calculator {
         Option sum  = Option.builder(SUM_S_HAND).longOpt(SUM_L_HAND).argName("Num1 Num2")
                             .numberOfArgs(2).valueSeparator(' ').desc("Adds 2 numbers together").build();
 
+        Option diff  = Option.builder(DIFF_S_HAND).longOpt(DIFF_L_HAND).argName("Num1 Num2")
+                .numberOfArgs(2).valueSeparator(' ').desc("Subtracts 2 numbers together").build();
+
         options.addOption(help);
+        options.addOption(diff);
         options.addOption(sum);
     }
 
@@ -83,6 +90,10 @@ public class Calculator {
      */
     public int sum(int x, int y) {
         return x + y;
+    }
+
+    public int diff(int x, int y) {
+        return x - y;
     }
 
     public static void main(String[] args) {
